@@ -8,7 +8,7 @@ module.exports = {
         path.join(parentDir, 'index.js')
     ],
     module: {
-        loaders: [{
+        rules: [{
             test: /\.(js|jsx)$/,
                 exclude: /node_modules/,
                 loader: 'babel-loader'
