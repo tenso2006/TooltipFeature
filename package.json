@@ -1,0 +1,25 @@
+{
+  "name": "tooltip",
+  "version": "1.0.0",
+  "description": "Tool tip using react",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tenso2006/TooltipFeature.git"
+  },
+  "author": "Tenzin Sonam",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tenso2006/TooltipFeature/issues"
+  },
+  "homepage": "https://github.com/tenso2006/TooltipFeature#readme",
+  "dependencies": {
+    "react": "^16.3.2",
+    "react-dom": "^16.3.2",
+    "webpack": "^4.6.0",
+    "webpack-dev-server": "^3.1.3"
+  }
+}
