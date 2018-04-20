@@ -5,7 +5,8 @@ export default class App extends Component {
   constructor (props) {
     super (props);
     this.state = {
-      hover: false
+      hover: false,
+      wasClicked: false
     }
   }
 
@@ -19,10 +20,10 @@ export default class App extends Component {
       hover: false
     })
   }
-  onClick = (hover) => {
-    console.log(hover)
+  onClick = (hover, wasClicked) => {
     this.setState({
-      hover: !hover
+      hover: !hover,
+      wasClicked: !wasClicked
     })
   }
 
@@ -35,7 +36,7 @@ export default class App extends Component {
       display: 'flex',
       justifyContent: 'space-around'
     }
-    if (this.state.hover) {
+    if (this.state.wasClicked || this.state.hover) {
       hoverStyle = {
         backgroundColor: 'blue',
         color: 'white'
@@ -72,23 +73,24 @@ export default class App extends Component {
               >
                 Normal Hover Me
             </a>
-            {this.state.hover ?
-              <div style={tooltipStyle}>Hi There!!! I have been hovered :)</div>
-              :
-              <div />
-            }
+            {this.state.hover ? <div style={tooltipStyle}>Hi There!!! I have been hovered :)</div> : <div /> }
           </div>
           <div>
-          <a style={hoverStyle}
-            onMouseEnter={()=>this.onMouseEnter()}
-            onClick={()=>this.onClick(this.state.hover)}>
-              Persistent Hover Click(OFF/ON)
-          </a>
-          {this.state.hover ?
-            <div style={tooltipStyle}>Hi There!!! I have been hovered :)</div>
-            :
-            <div />
-          }
+            <a style={hoverStyle}
+              onMouseEnter={()=>this.onMouseEnter()}
+              onClick={()=>this.onClick(this.state.hover, true)}>
+                Persistent Hover Click(OFF/ON)
+            </a>
+            {this.state.hover ? <div style={tooltipStyle}>Hi There!!! I have been hovered :)</div> : <div /> }
+          </div>
+          <div>
+            <a style={hoverStyle}
+              onMouseEnter={()=>this.onMouseEnter()}
+              onMouseLeave={()=>this.onMouseLeave()}
+              onClick={()=>this.onClick(true, this.state.wasClicked)}>
+                Persistent Hover Click(ON/OFF)
+            </a>
+            { this.state.wasClicked || this.state.hover ? <div style={tooltipStyle}>Hi There!!! I have been hovered :)</div> : <div /> }
           </div>
         </div>
       </div>
