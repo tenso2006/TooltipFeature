@@ -19,9 +19,10 @@ export default class App extends Component {
       hover: false
     })
   }
-  onClick = (e) => {
+  onClick = (hover) => {
+    console.log(hover)
     this.setState({
-      hover: !this.state.hover
+      hover: !hover
     })
   }
 
@@ -30,7 +31,9 @@ export default class App extends Component {
     let tooltipStyle;
     let appStyle = {
       textAlign: 'center',
-      lineHeight: '50px'
+      lineHeight: '50px',
+      display: 'flex',
+      justifyContent: 'space-around'
     }
     if (this.state.hover) {
       hoverStyle = {
@@ -44,7 +47,6 @@ export default class App extends Component {
         margin: '30px auto',
         borderRadius: '3px',
         backgroundColor: 'grey'
-
       }
     } else {
       hoverStyle = {
@@ -60,18 +62,35 @@ export default class App extends Component {
       }
     }
     return (
-      <div style={appStyle}>
-        <h3>Tool Tip App</h3>
-        <a style={hoverStyle}
-          onMouseEnter={this.onMouseEnter}
-          onMouseLeave={this.onMouseLeave}
-          onClick={this.onClick}>Hover Me
-        </a>
-        {this.state.hover ?
-          <div style={tooltipStyle}>Hi There!!! I have been hovered :)</div>
-          :
-          <div />
-        }
+      <div style={{textAlign:'center'}}>
+        <h3 >Tool Tip App</h3>
+        <div style={appStyle}>
+          <div>
+            <a style={hoverStyle}
+              onMouseEnter={()=>this.onMouseEnter()}
+              onMouseLeave={()=>this.onMouseLeave()}
+              >
+                Normal Hover Me
+            </a>
+            {this.state.hover ?
+              <div style={tooltipStyle}>Hi There!!! I have been hovered :)</div>
+              :
+              <div />
+            }
+          </div>
+          <div>
+          <a style={hoverStyle}
+            onMouseEnter={()=>this.onMouseEnter()}
+            onClick={()=>this.onClick(this.state.hover)}>
+              Persistent Hover Click(OFF/ON)
+          </a>
+          {this.state.hover ?
+            <div style={tooltipStyle}>Hi There!!! I have been hovered :)</div>
+            :
+            <div />
+          }
+          </div>
+        </div>
       </div>
     )
   }
