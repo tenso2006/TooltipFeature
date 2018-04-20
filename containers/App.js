@@ -31,7 +31,9 @@ export default class App extends Component {
     let tooltipStyle;
     let appStyle = {
       textAlign: 'center',
-      lineHeight: '50px'
+      lineHeight: '50px',
+      display: 'flex',
+      justifyContent: 'space-around'
     }
     if (this.state.hover) {
       hoverStyle = {
