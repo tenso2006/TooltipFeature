@@ -9,7 +9,17 @@ export default class App extends Component {
     }
   }
 
-  handleHover = (e) => {
+  onMouseEnter = (e) => {
+    this.setState({
+      hover: true
+    })
+  }
+  onMouseLeave = (e) => {
+    this.setState({
+      hover: false
+    })
+  }
+  onClick = (e) => {
     this.setState({
       hover: !this.state.hover
     })
@@ -53,8 +63,9 @@ export default class App extends Component {
       <div style={appStyle}>
         <h3>Tool Tip App</h3>
         <a style={hoverStyle}
-          onMouseEnter={this.handleHover}
-          onMouseLeave={this.handleHover}>Hover Me
+          onMouseEnter={this.onMouseEnter}
+          onMouseLeave={this.onMouseLeave}
+          onClick={this.onClick}>Hover Me
         </a>
         {this.state.hover ?
           <div style={tooltipStyle}>Hi There!!! I have been hovered :)</div>
