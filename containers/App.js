@@ -34,7 +34,8 @@ export default class App extends Component {
       textAlign: 'center',
       lineHeight: '50px',
       display: 'flex',
-      justifyContent: 'space-around'
+      justifyContent: 'space-around',
+      minHeight: '220px'
     }
     if (this.state.wasClicked || this.state.hover) {
       hoverStyle = {
