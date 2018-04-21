@@ -1,3 +1,5 @@
+Originally built by Tenzin Sonam https://github.com/tenso2006/TooltipFeature
+
 # TooltipFeature
 
 Before starting: Please do ---> npm install    on the root directory
