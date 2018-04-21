@@ -81,7 +81,7 @@ export default class App extends Component {
               onClick={()=>this.onClick(this.state.hover, true)}>
                 Persistent Hover Click(OFF/ON)
             </a>
-            {this.state.hover ? <div style={tooltipStyle}>Hi There!!! I have been hovered :)</div> : <div /> }
+            { this.state.wasClicked || this.state.hover ? <div style={tooltipStyle}>Hi There!!! I have been hovered :)</div> : <div /> }
           </div>
           <div>
             <a style={hoverStyle}
