@@ -8,11 +8,11 @@ const MouseOverClickHover = ({info, description, clickValues}) => {
 	return (
     <div style={{ minWidth: '160px'}}>
       <a style={hoverStyle}
-				onMouseEnter={()=>info.onMouseEnter()}
-				onMouseLeave={()=>info.onMouseLeave()}
-				onClick={()=>info.onClick(clickValues)}
-			>
-				{description}
+	onMouseEnter={()=>info.onMouseEnter()}
+	onMouseLeave={()=>info.onMouseLeave()}
+	onClick={()=>info.onClick(clickValues)}
+      >
+ 	{description}
       </a>
       { info.state.wasClicked || info.state.hover ? <div style={tooltipStyle}>Hi There!!! I have been hovered :</div> : <div /> }
     </div>
@@ -24,10 +24,10 @@ const NumericHover = ({info, description, hoverVal}) => {
 	return (
     <div style={{ minWidth: '160px'}}>
       <a style={hoverStyle}
-				onMouseEnter={()=>info.onMouseMany(hoverVal)}
-				onMouseLeave={()=>info.onMouseLeave()}
-			>
-				{description}
+	onMouseEnter={()=>info.onMouseMany(hoverVal)}
+	onMouseLeave={()=>info.onMouseLeave()}
+      >
+        {description}
       </a>
       { info.state.hoverVal > hoverVal-1 ? <div style={tooltipStyle}>Hi There!!! I have been hovered :</div> : <div /> }
     </div>
@@ -41,7 +41,7 @@ export default class App extends Component {
     this.state = {
       hover: false,
       wasClicked: false,
-			hoverVal:0
+      hoverVal:0
     }
   }
 
@@ -50,31 +50,31 @@ export default class App extends Component {
       hover: true
     })
   }
-	onMouseMany = (hoverVal) => {
-		// console.log(hoverVal);
-		this.setState({
-			hoverVal: hoverVal
-		})
-	}
+  onMouseMany = (hoverVal) => {
+  // console.log(hoverVal);
+    this.setState({
+      hoverVal: hoverVal
+    })
+  }
 
   onMouseLeave = (e) => {
     this.setState({
       hover: false,
-			hoverVal:0
+      hoverVal:0
     })
   }
 
   onClick = (clickValues) => {
-		// console.log(clickValues)
+    // console.log(clickValues)
     this.setState({
       hover: !clickValues.hover,
       wasClicked: !clickValues.wasClicked
     })
   }
 
-	set = (val) => {
-		return !val
-	}
+  set = (val) => {
+    return !val
+  }
 
   render () {
     appStyle = {
@@ -112,14 +112,14 @@ export default class App extends Component {
         <h3 >Tool Tip App</h3>
         <div style={appStyle}>
           <MouseOverClickHover info={this} description={'Normal Hover Me'							 } clickValues={{hover:this.set(true)  , wasClicked:this.set(false)}}/>
-					<MouseOverClickHover info={this} description={'Persistent Hover Click(OFF/ON)'} clickValues={{hover:this.state.hover, wasClicked:this.set(false)}}/>
-					<MouseOverClickHover info={this} description={'Persistent Hover Click(ON/OFF)'} clickValues={{hover:this.set(false) , wasClicked:this.state.wasClicked}}/>
+	  <MouseOverClickHover info={this} description={'Persistent Hover Click(OFF/ON)'} clickValues={{hover:this.state.hover, wasClicked:this.set(false)}}/>
+	  <MouseOverClickHover info={this} description={'Persistent Hover Click(ON/OFF)'} clickValues={{hover:this.set(false) , wasClicked:this.state.wasClicked}}/>
         </div>
-				<div style={appStyle}>
-					< NumericHover info={this} description={'Hover ONE'							 		 } hoverVal={1} />
-					< NumericHover info={this} description={'Hover ONE and TWO'					 } hoverVal={2} />
-					< NumericHover info={this} description={'Hover ONE and TWO and THREE'} hoverVal={3} />
-				</div>
+	<div style={appStyle}>
+	  < NumericHover info={this} description={'Hover ONE'							 		 } hoverVal={1} />
+	  < NumericHover info={this} description={'Hover ONE and TWO'					 } hoverVal={2} />
+	  < NumericHover info={this} description={'Hover ONE and TWO and THREE'} hoverVal={3} />
+	  </div>
       </div>
     )
   }
