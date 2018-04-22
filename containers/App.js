@@ -3,7 +3,7 @@ import React, {Component} from 'react';
 let hoverStyle = {}
 let appStyle = {}
 let tooltipStyle = {}
-const ContactRow = ({info, description, clickValues}) => {
+const MouseOverClickHover = ({info, description, clickValues}) => {
 	// console.log(description, clickValues)
 	return (
     <div style={{ minWidth: '160px'}}>
@@ -19,13 +19,29 @@ const ContactRow = ({info, description, clickValues}) => {
   )
 }
 
+const NumericHover = ({info, description, hoverVal}) => {
+	// console.log(description, clickValues)
+	return (
+    <div style={{ minWidth: '160px'}}>
+      <a style={hoverStyle}
+				onMouseEnter={()=>info.onMouseMany(hoverVal)}
+				onMouseLeave={()=>info.onMouseLeave()}
+			>
+				{description}
+      </a>
+      { info.state.hoverVal > hoverVal-1 ? <div style={tooltipStyle}>Hi There!!! I have been hovered :</div> : <div /> }
+    </div>
+  )
+}
+
 export default class App extends Component {
 
   constructor (props) {
     super (props);
     this.state = {
       hover: false,
-      wasClicked: false
+      wasClicked: false,
+			hoverVal:0
     }
   }
 
@@ -34,10 +50,17 @@ export default class App extends Component {
       hover: true
     })
   }
+	onMouseMany = (hoverVal) => {
+		// console.log(hoverVal);
+		this.setState({
+			hoverVal: hoverVal
+		})
+	}
 
   onMouseLeave = (e) => {
     this.setState({
-      hover: false
+      hover: false,
+			hoverVal:0
     })
   }
 
@@ -61,7 +84,7 @@ export default class App extends Component {
       justifyContent: 'space-around',
       minHeight: '220px'
     }
-    if (this.state.wasClicked || this.state.hover) {
+    if (this.state.wasClicked || this.state.hover || this.state.hoverVal > 0) {
       hoverStyle = {
         backgroundColor: 'blue',
         color: 'white'
@@ -69,7 +92,6 @@ export default class App extends Component {
       tooltipStyle = {
         boxShadow: '3px 2px 3px 3px green',
         width: '150px',
-        paddingTop: '1rem',
         margin: '30px auto',
         borderRadius: '3px',
         backgroundColor: 'grey'
@@ -81,7 +103,6 @@ export default class App extends Component {
       tooltipStyle = {
         boxShadow: '1px 1px 1px white',
         width: '150px',
-        paddingTop: '1rem',
         margin: '30px auto',
         borderRadius: '3px'
       }
@@ -90,10 +111,15 @@ export default class App extends Component {
       <div style={{textAlign:'center'}}>
         <h3 >Tool Tip App</h3>
         <div style={appStyle}>
-          <ContactRow info={this} description={'Normal Hover Me'							 } clickValues={{hover:this.set(true)  , wasClicked:this.set(false)}}/>
-					<ContactRow info={this} description={'Persistent Hover Click(OFF/ON)'} clickValues={{hover:this.state.hover, wasClicked:this.set(false)}}/>
-					<ContactRow info={this} description={'Persistent Hover Click(ON/OFF)'} clickValues={{hover:this.set(false) , wasClicked:this.state.wasClicked}}/>
+          <MouseOverClickHover info={this} description={'Normal Hover Me'							 } clickValues={{hover:this.set(true)  , wasClicked:this.set(false)}}/>
+					<MouseOverClickHover info={this} description={'Persistent Hover Click(OFF/ON)'} clickValues={{hover:this.state.hover, wasClicked:this.set(false)}}/>
+					<MouseOverClickHover info={this} description={'Persistent Hover Click(ON/OFF)'} clickValues={{hover:this.set(false) , wasClicked:this.state.wasClicked}}/>
         </div>
+				<div style={appStyle}>
+					< NumericHover info={this} description={'Hover ONE'							 		 } hoverVal={1} />
+					< NumericHover info={this} description={'Hover ONE and TWO'					 } hoverVal={2} />
+					< NumericHover info={this} description={'Hover ONE and TWO and THREE'} hoverVal={3} />
+				</div>
       </div>
     )
   }
