@@ -1,5 +1,24 @@
 import React, {Component} from 'react';
 
+let hoverStyle = {}
+let appStyle = {}
+let tooltipStyle = {}
+const ContactRow = ({info, description, clickValues}) => {
+	// console.log(description, clickValues)
+	return (
+    <div style={{ minWidth: '160px'}}>
+      <a style={hoverStyle}
+				onMouseEnter={()=>info.onMouseEnter()}
+				onMouseLeave={()=>info.onMouseLeave()}
+				onClick={()=>info.onClick(clickValues)}
+			>
+				{description}
+      </a>
+      { info.state.wasClicked || info.state.hover ? <div style={tooltipStyle}>Hi There!!! I have been hovered :</div> : <div /> }
+    </div>
+  )
+}
+
 export default class App extends Component {
 
   constructor (props) {
@@ -15,22 +34,27 @@ export default class App extends Component {
       hover: true
     })
   }
+
   onMouseLeave = (e) => {
     this.setState({
       hover: false
     })
   }
-  onClick = (hover, wasClicked) => {
+
+  onClick = (clickValues) => {
+		// console.log(clickValues)
     this.setState({
-      hover: !hover,
-      wasClicked: !wasClicked
+      hover: !clickValues.hover,
+      wasClicked: !clickValues.wasClicked
     })
   }
 
+	set = (val) => {
+		return !val
+	}
+
   render () {
-    let hoverStyle;
-    let tooltipStyle;
-    let appStyle = {
+    appStyle = {
       textAlign: 'center',
       lineHeight: '50px',
       display: 'flex',
@@ -52,8 +76,7 @@ export default class App extends Component {
       }
     } else {
       hoverStyle = {
-        backgroundColor: 'white',
-
+        backgroundColor: 'white'
       }
       tooltipStyle = {
         boxShadow: '1px 1px 1px white',
@@ -67,32 +90,9 @@ export default class App extends Component {
       <div style={{textAlign:'center'}}>
         <h3 >Tool Tip App</h3>
         <div style={appStyle}>
-          <div>
-            <a style={hoverStyle}
-              onMouseEnter={()=>this.onMouseEnter()}
-              onMouseLeave={()=>this.onMouseLeave()}
-              >
-                Normal Hover Me
-            </a>
-            {this.state.hover ? <div style={tooltipStyle}>Hi There!!! I have been hovered :)</div> : <div /> }
-          </div>
-          <div>
-            <a style={hoverStyle}
-              onMouseEnter={()=>this.onMouseEnter()}
-              onClick={()=>this.onClick(this.state.hover, true)}>
-                Persistent Hover Click(OFF/ON)
-            </a>
-            { this.state.wasClicked || this.state.hover ? <div style={tooltipStyle}>Hi There!!! I have been hovered :)</div> : <div /> }
-          </div>
-          <div>
-            <a style={hoverStyle}
-              onMouseEnter={()=>this.onMouseEnter()}
-              onMouseLeave={()=>this.onMouseLeave()}
-              onClick={()=>this.onClick(true, this.state.wasClicked)}>
-                Persistent Hover Click(ON/OFF)
-            </a>
-            { this.state.wasClicked || this.state.hover ? <div style={tooltipStyle}>Hi There!!! I have been hovered :)</div> : <div /> }
-          </div>
+          <ContactRow info={this} description={'Normal Hover Me'							 } clickValues={{hover:this.set(true)  , wasClicked:this.set(false)}}/>
+					<ContactRow info={this} description={'Persistent Hover Click(OFF/ON)'} clickValues={{hover:this.state.hover, wasClicked:this.set(false)}}/>
+					<ContactRow info={this} description={'Persistent Hover Click(ON/OFF)'} clickValues={{hover:this.set(false) , wasClicked:this.state.wasClicked}}/>
         </div>
       </div>
     )
