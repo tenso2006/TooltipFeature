@@ -9,7 +9,7 @@ const MouseOverClickHover = ({info, description, clickValues}) => {
     <div style={{ minWidth: '160px'}}>
       <a style={hoverStyle}
 	onMouseEnter={()=>info.onMouseEnter()}
-	onMouseLeave={()=>info.onMouseLeave()}
+	onMouseLeave={() => info.onMouseLeave(clickValues.hover)}
 	onClick={()=>info.onClick(clickValues)}
       >
  	{description}
@@ -57,9 +57,9 @@ export default class App extends Component {
     })
   }
 
-  onMouseLeave = (e) => {
+  onMouseLeave = (hover) => {
     this.setState({
-      hover: false,
+      hover: hover,
       hoverVal:0
     })
   }
@@ -113,7 +113,7 @@ export default class App extends Component {
         <div style={appStyle}>
           <MouseOverClickHover info={this} description={'Normal Hover Me'							 } clickValues={{hover:this.set(true)  , wasClicked:this.set(false)}}/>
 	  <MouseOverClickHover info={this} description={'Persistent Hover Click(OFF/ON)'} clickValues={{hover:this.state.hover, wasClicked:this.set(false)}}/>
-	  <MouseOverClickHover info={this} description={'Persistent Hover Click(ON/OFF)'} clickValues={{hover:this.set(false) , wasClicked:this.state.wasClicked}}/>
+	  <MouseOverClickHover info={this} description={'Persistent Hover Click(ON/OFF)'} clickValues={{hover:this.state.wasClicked , wasClicked:this.state.wasClicked}}/>
         </div>
 	<div style={appStyle}>
 	  < NumericHover info={this} description={'Hover ONE'							 		 } hoverVal={1} />
