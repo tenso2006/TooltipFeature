@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
-import {MouseOverClickHover, NumericHover} from './tooltips/StatelessTooltips.js';
-
+import {MouseOverClickHover, NumericHover} from './../node_modules/react-customizable-tooltip/StatelessTooltips.js';
 
 let hoverStyle, appStyle, tooltipStyle = {}
 
