@@ -96,10 +96,10 @@ export default class App extends Component {
           <MouseOverClickHover info={this} description={'Normal Hover Me'} clickValues={{hover:this.set(true), wasClicked:this.state.wasClicked}}
             hoverStyle={hoverStyle} tooltipStyle={tooltipStyle}
           />
-          <MouseOverClickHover info={this} description={'Persistent Hover Click(OFF/ON)'} clickValues={{hover:this.state.hover, wasClicked:this.set(false)}}
+          <MouseOverClickHover info={this} description={'Persistent Hover OFF Click(ON/OFF)'} clickValues={{hover:this.state.wasClicked , wasClicked:this.state.wasClicked}}
             hoverStyle={hoverStyle} tooltipStyle={tooltipStyle}
           />
-          <MouseOverClickHover info={this} description={'Persistent Hover Click(ON/OFF)'} clickValues={{hover:this.state.wasClicked , wasClicked:this.state.wasClicked}}
+          <MouseOverClickHover info={this} description={'Persistent Hover ON Click(OFF/ON)'} clickValues={{hover:this.state.hover, wasClicked:this.set(false)}}
             hoverStyle={hoverStyle} tooltipStyle={tooltipStyle}
           />
         </div>
