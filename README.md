@@ -2,7 +2,12 @@ Originally built by Tenzin Sonam https://github.com/tenso2006/TooltipFeature
 
 # TooltipFeature
 
-Before starting: Please do ---> npm install    on the root directory
+To understand the usage of this NodeModule please clone down the project
+and run npm install.
+
+This Github repository installs the component as a node_module used by the "component/Example.js" file.
+
+Please do ---> npm install    on the root directory
 
 To start the server 
   type ---> npm run dev   in the console with root directory.
