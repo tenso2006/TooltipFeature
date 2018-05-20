@@ -3,7 +3,7 @@ import {MouseOverClickHover, NumericHover} from './../node_modules/react-customi
 
 let hoverStyle, appStyle, tooltipStyle = {}
 
-export default class App extends Component {
+export default class Example extends Component {
 
   constructor (props) {
     super (props);
