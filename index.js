@@ -2,6 +2,6 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 // main app
-import App from './containers/App';
+import Example from './containers/Example';
 
-ReactDOM.render(<App />, document.getElementById('app'))
+ReactDOM.render(<Example />, document.getElementById('app'))

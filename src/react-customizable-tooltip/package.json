@@ -1,0 +1,19 @@
+{
+  "name": "react-customizable-tooltip",
+  "version": "1.0.2",
+  "description": "Tool tip using react",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tenso2006/TooltipFeature.git"
+  },
+  "author": "Tenzin Sonam",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tenso2006/TooltipFeature/issues"
+  },
+  "homepage": "https://github.com/tenso2006/TooltipFeature#readme",
+  "dependencies": {
+    "react": "^16.3.2"
+  }
+}

@@ -1,10 +1,9 @@
 import React, {Component} from 'react';
-import {MouseOverClickHover, NumericHover} from './tooltips/StatelessTooltips.js';
-
+import {MouseOverClickHover, NumericHover} from './../node_modules/react-customizable-tooltip/StatelessTooltips.js';
 
 let hoverStyle, appStyle, tooltipStyle = {}
 
-export default class App extends Component {
+export default class Example extends Component {
 
   constructor (props) {
     super (props);

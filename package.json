@@ -1,6 +1,6 @@
 {
   "name": "tooltip",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Tool tip using react",
   "main": "index.js",
   "scripts": {
@@ -19,6 +19,7 @@
   "homepage": "https://github.com/tenso2006/TooltipFeature#readme",
   "dependencies": {
     "react": "^16.3.2",
+    "react-customizable-tooltip": "^1.0.0",
     "react-dom": "^16.3.2",
     "webpack": "^4.6.0",
     "webpack-cli": "^2.0.14",
