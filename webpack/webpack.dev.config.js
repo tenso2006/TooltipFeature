@@ -14,7 +14,7 @@ module.exports = {
                 loader: 'babel-loader'
             },{
                 test: /\.less$/,
-                loaders: ["style-loader", "css-loder", "less-loader"]
+                loaders: ["less-loader", "style-loader", "css-loder"]
             }
         ]
     },
